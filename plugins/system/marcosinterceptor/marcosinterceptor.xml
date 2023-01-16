@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension version="3.0" type="plugin" group="system" method="upgrade">
+	<name>plg_sytem_marcosinterceptor</name>
+	<author>marco maria leoni</author>
+	<creationDate>Nov 2015</creationDate>
+	<copyright>Copyright (C) 2010 - 2015 mmleoni web consulting. All rights reserved.</copyright>
+	<license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPL</license>
+	<authorEmail>red@mmleoni.net</authorEmail>
+	<authorUrl>http://www.mmleoni.net</authorUrl>
+	<version>1.6</version>
+	<description>PLG_SYTEM_MARCOSINTERCEPTOR_XML_DESCRIPTION</description>
+	<scriptfile>marcosinterceptorInstallerScript.php</scriptfile>
+	<install>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+		</sql>
+	</install>
+	<uninstall>
+		<sql>
+			<file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+		</sql>
+	</uninstall>
+	<files>
+		<filename plugin="marcosinterceptor">marcosinterceptor.php</filename>
+		<filename>index.html</filename>
+		<folder>sql</folder>
+	</files>
+	<update> 
+		<schemas> 
+			<schemapath type="mysql">sql/updates/mysql</schemapath> 
+		</schemas> 
+	</update>	
+	<languages folder="language">
+		<language tag="en-GB">en-GB/en-GB.plg_system_marcosinterceptor.ini</language>
+		<language tag="en-GB">en-GB/en-GB.plg_system_marcosinterceptor.sys.ini</language>
+		<language tag="it-IT">it-IT/it-IT.plg_system_marcosinterceptor.ini</language>
+		<language tag="it-IT">it-IT/it-IT.plg_system_marcosinterceptor.sys.ini</language>
+	</languages>	
+	<config>
+		<fields name="params">
+			<fieldset name="basic">
+				<field name="frontendonly" type="list" default="1" label="PLG_MARCOSINTERCEPTOR_FIELD_FRONTENDONLY_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_FRONTENDONLY_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="namespaces" type="list" default="GET,POST,REQUEST" label="PLG_MARCOSINTERCEPTOR_FIELD_NAMESPACES_LABEL" description="">
+					<option value="GET">Get</option>
+					<option value="GET,POST">Get, Post</option>
+					<option value="REQUEST">Request</option>
+					<option value="GET,POST,REQUEST">Get, Post, Request</option>
+				</field>
+				<field name="ignoredexts" type="textarea" default="" label="PLG_MARCOSINTERCEPTOR_FIELD_IGNOREDEXTS_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_IGNOREDEXTS_DESC" rows="10" cols="25" />
+			
+				<field type="spacer" name="notification" label="PLG_MARCOSINTERCEPTOR_SPACER_NOTIFICATION_LABEL" />
+				<field name="sendnotification" type="list" default="0" label="PLG_MARCOSINTERCEPTOR_FIELD_SENDNOTIFICATION_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_SENDNOTIFICATION_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="sendto" type="text" default="" label="PLG_MARCOSINTERCEPTOR_FIELD_SENDTO_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_SENDTO_DESC" size="25" />
+				
+		  		<field type="spacer"  name="advancedparameters" label="PLG_MARCOSINTERCEPTOR_SPACER_ADVANCEDPARAMETERS_LABEL" />
+				<field name="raiseerror" type="list" default="1" label="PLG_MARCOSINTERCEPTOR_FIELD_RAISEERROR_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_RAISEERROR_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="errorcode" type="text" default="500" label="PLG_MARCOSINTERCEPTOR_FIELD_ERRORCODE_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_ERRORCODE_DESC" size="3" />
+				<field name="errormsg" type="text" default="Internal Server Error" label="PLG_MARCOSINTERCEPTOR_FIELD_ERRORMSG_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_ERRORMSG_DESC" size="50" />
+
+				<field type="spacer" name="localfileinclusionparameters" label="PLG_MARCOSINTERCEPTOR_SPACER_LOCALFILEINCLUSIONPARAMETERS_LABEL" />
+				<field name="strictlfi" type="list" default="0" label="PLG_MARCOSINTERCEPTOR_FIELD_STRICTLFI_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_STRICTLFI_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="levellfi" type="text" default="2" label="PLG_MARCOSINTERCEPTOR_FIELD_LEVELLFI_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_LEVELLFI_DESC" />
+				
+				<field type="spacer" name="ipblocking" label="PLG_MARCOSINTERCEPTOR_SPACER_IPBLOCKING_LABEL" />
+				<field name="ipblock" type="list" default="0" label="PLG_MARCOSINTERCEPTOR_FIELD_IPBLOCK_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_IPBLOCK_DESC">
+					<option value="0">JNO</option>
+					<option value="1">JYES</option>
+				</field>
+				<field name="ipblocktime" type="text" default="300" label="PLG_MARCOSINTERCEPTOR_FIELD_IPBLOCKTIME_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_IPBLOCKTIME_DESC" size="6" />
+				<field name="ipblockcount" type="text" default="3" label="PLG_MARCOSINTERCEPTOR_FIELD_IPBLOCKCOUNT_LABEL" description="PLG_MARCOSINTERCEPTOR_FIELD_IPBLOCKCOUNT_DESC" size="5" />
+		
+			</fieldset>
+		</fields>
+	</config>
+</extension>
